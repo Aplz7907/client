@@ -5,10 +5,11 @@ mat-toolbar button {
     border: none;
     cursor: pointer;
     background: none;
+    border: 1px solid black;
 }
 
 mat-toolbar button:not(.home-button) {
-    // border-bottom: 0.15em solid rgb(238, 255, 0);
+
     color: rgb(255, 125, 205);
 }
 
