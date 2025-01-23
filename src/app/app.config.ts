@@ -7,11 +7,10 @@ import { provideHttpClient } from '@angular/common/http'
 import { NgxSpinnerModule } from 'ngx-spinner'
 
 export const appConfig: ApplicationConfig = {
-  providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
-    provideAnimationsAsync(),
-    provideHttpClient(),
-    importProvidersFrom(NgxSpinnerModule)
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }),
+  provideRouter(routes),
+  provideAnimationsAsync(),
+  provideHttpClient(),
+  importProvidersFrom(NgxSpinnerModule)
   ]
 }

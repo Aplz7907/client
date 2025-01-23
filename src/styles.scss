@@ -4,7 +4,6 @@
 
 html {
     @include mat.theme((color: (theme-type: light,
-                // primary: mat.$azure-palette,
                 primary: mat.$violet-palette,
                 tertiary: mat.$blue-palette,
             ),
@@ -13,7 +12,8 @@ html {
         ));
 }
 
-html {
+html,
+body {
     height: 100%;
 }
 
@@ -27,6 +27,7 @@ body {
     flex: 1 1 auto;
 }
 
-.image-avatar {
+.imgage-avatar {
     background-size: cover;
+
 }
