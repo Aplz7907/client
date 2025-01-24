@@ -1,6 +1,8 @@
 import { Photo } from "./photo"
 
 export interface User {
+    token: string
+    user: User
     id?: string,
     display_name?: string,
     username: string,

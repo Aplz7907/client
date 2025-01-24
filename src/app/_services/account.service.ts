@@ -9,6 +9,9 @@ import { parseUserPhoto } from '../_helper/helper'
   providedIn: 'root'
 })
 export class AccountService {
+  static data() {
+    throw new Error('Method not implemented.')
+  }
 
   private _key = 'account';
   private _baseApiUrl = environment.baseUrl + 'api/account/'
@@ -19,6 +22,8 @@ export class AccountService {
   constructor() {
     this.loadDataFromLocalStorage()
   }
+
+  //#region login_and_register
 
   logout() {
     localStorage.removeItem(this._key)
@@ -55,7 +60,9 @@ export class AccountService {
       return error.error?.message
     }
   }
+  //#endregion
 
+  //#region local_storage
   private saveDataToLocalStorage() {
     const jsonString = JSON.stringify(this.data())
     localStorage.setItem(this._key, jsonString)
@@ -68,6 +75,26 @@ export class AccountService {
       this.data.set(data)
     }
   }
+  //#endregion
+  //#region profile
+  async updateProfile(user: User): Promise<boolean> {
+    const url = environment.baseUrl + 'api/user/'
+    try {
+      const response = this._http.patch(url, user)
+      await firstValueFrom(response)
+      const currentData = this.data()?.user
+      if (currentData) {
+        currentData.user = user
+        this.data.set(currentData)
+        this.saveDataToLocalStorage()
+      }
+
+    } catch (error) {
+      return false
+    }
+    return true
+  }
+  //#endregion
 }
 
 
