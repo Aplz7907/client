@@ -5,18 +5,18 @@ import { NgxSpinnerService } from 'ngx-spinner'
   providedIn: 'root'
 })
 export class LoadingService {
-  loadingRequestCount = 0;
-
-  private spinner = inject(NgxSpinnerService);
+  loadingRequestCount = 0
+  private spinner = inject(NgxSpinnerService)
   constructor() { }
-
   loading() {
     this.loadingRequestCount++
     this.spinner.show(undefined, {
-      type: "fire",
-      bdColor: "rgba(0, 0, 0, 0.8)",
-      color: 'rgba(255, 255, 255, 0.8)',
-      fullScreen: false
+      type: "ball-8bits",
+      bdColor: 'rgba(183, 179, 179, 0.8)',
+      color: 'rgba(15, 63, 108, 0.8)',
+      fullScreen: true,
+      size: "large"
+
     })
   }
   idle() {

@@ -1,23 +1,21 @@
 mat-toolbar button {
-    display: flex;
+    border: none;
     align-items: center;
     justify-content: center;
-    border: none;
+    display: flex;
     cursor: pointer;
     background: none;
-
-}
-
-mat-toolbar button:not(.home-button) {
-    color: rgb(255, 125, 205);
 }
 
 mat-toolbar button.active:not(.home-button) {
-    color: rgb(255, 0, 157);
-    border-bottom: 0.15em solid red;
+    color: rgb(255, 166, 0);
+}
+
+mat-toolbar button.active:not(.home-button) {
+    border-bottom: 0.15em solid rgb(235, 135, 170);
 }
 
 mat-toolbar .home-button {
-    color: rgb(255, 0, 157);
-    font-size: 1em;
+    font-size: xx-large;
+    color: rgb(95, 160, 154);
 }
