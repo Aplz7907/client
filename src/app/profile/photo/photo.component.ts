@@ -7,15 +7,13 @@ import { CommonModule } from '@angular/common'
 import { MatDialog } from '@angular/material/dialog'
 import { UploadPhotoComponent } from '../../_dialogs/upload-photo/upload-photo.component'
 import { AccountService } from '../../_services/account.service'
-import { TimeagoClock, TimeagoCustomFormatter, TimeagoDefaultClock, TimeagoFormatter, TimeagoIntl, TimeagoModule } from 'ngx-timeago'
-import { strings as engString } from 'ngx-timeago/language-strings/en'
+import { TimeagoClock, TimeagoCustomFormatter, TimeagoDefaultClock, TimeagoFormatter, TimeagoIntl, TimeagoModule } from "ngx-timeago"
+import { strings as engString } from "ngx-timeago/language-strings/en.js"
 
-// @Injectable()
-// class MyIntl extends TimeagoIntl{}
 
 @Component({
   selector: 'app-photo',
-  imports: [MatButtonModule, MatIconModule, MatCardModule, CommonModule, TimeagoModule],
+  imports: [TimeagoModule, MatButtonModule, MatIconModule, MatCardModule, CommonModule],
   templateUrl: './photo.component.html',
   styleUrl: './photo.component.scss',
   providers: [
@@ -25,16 +23,16 @@ import { strings as engString } from 'ngx-timeago/language-strings/en'
   ]
 })
 export class PhotoComponent {
-  intl = inject(TimeagoIntl)
+  // intl = inject(TimeagoIntl)
   user = input.required<User>()
-  constructor(intl: TimeagoIntl) {
-    intl.strings = engString
-    intl.changes.next()
+
+  constructor(private intl: TimeagoIntl) {
+    this.intl.strings = engString
+    this.intl.changes.next()
   }
 
   private dialog = inject(MatDialog)
   private accountService = inject(AccountService)
-
   openAddphotoDialog() {
     const ref = this.dialog.open(UploadPhotoComponent)
     ref.afterClosed().subscribe(async file => {
@@ -42,12 +40,9 @@ export class PhotoComponent {
     })
   }
   deletePhoto(photo_id: string) {
-    this.accountService.deletePhoto(photo_id)
-
+    this.accountService.deletephoto(photo_id)
   }
   setAvatar(photo_id: string) {
     this.accountService.setAvatar(photo_id)
-
-
   }
 }

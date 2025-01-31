@@ -41,7 +41,7 @@ export class UploadPhotoComponent {
         fileReader.readAsDataURL(this.imgFile)
       } else {
         this.imgFile = undefined
-        this.errMessage.set('Image file must be .jpg or .png')
+        this.errMessage.set('Image file must be .jpg or .png 🥵')
       }
     }
   }

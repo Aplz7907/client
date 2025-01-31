@@ -18,6 +18,56 @@ export class AccountService {
   constructor() {
     this.loadDataFromlocalStorage()
   }
+
+
+  async setAvatar(photo_id: string): Promise<void> {
+    const url = environment.baseUrl + 'api/photo/' + photo_id
+    try {
+      const response = this._http.patch(url, {})
+      await firstValueFrom(response)
+      const user = this.data()!.user
+      if (user) {
+        const photos = user.photos?.map(p => {
+          p.is_avatar = p.id === photo_id
+          return p
+        })
+        user.photos = photos
+
+        this.setUser(user)
+      }
+    } catch (error) {
+
+    }
+  }
+
+
+  private setUser(user: User) {
+    const copyData = this.data()
+    if (copyData)
+      copyData.user = user
+    this.data.set(copyData)
+    this.saveDataTolocalStorage()
+  }
+
+  async deletephoto(photo_id: string): Promise<void> {
+    const url = environment.baseUrl + 'api/photo/' + photo_id
+    try {
+      const response = this._http.delete(url)
+      await firstValueFrom(response)
+      const user = this.data()!.user
+      if (user) {
+        const photos = user.photos?.filter(p => p.id !== photo_id)
+        user.photos = photos
+
+        this.setUser(user)
+
+      }
+    } catch (error) {
+
+    }
+  }
+
+
   //#region login_and_register
   logout() {
     localStorage.removeItem(this._key)
@@ -96,11 +146,8 @@ export class AccountService {
         if (!user.photos)
           user.photos = []
         user.photos.push(photo)
-        const copyData = this.data()
-        if (copyData)
-          copyData.user = user
-        this.data.set(copyData)
-        this.saveDataTolocalStorage()
+        this.setUser(user)
+
         return true
       }
     } catch (error) {
@@ -108,42 +155,8 @@ export class AccountService {
     }
     return false
   }
-  //endregion
-  async setAvatar(photo_id: string): Promise<void> {
-    const url = environment.baseUrl + 'api/photo/' + photo_id
-    try {
-      const response = this._http.post<Photo>(url, {})
-      await firstValueFrom(response)
-      const user = this.data()!.user
-      if (user) {
-        const photo = user.photos?.map(p => {
-          p.is_avatar = p.id == photo_id
-          return p
-        })
-        user.photos = photo
-        const copyData = this.data()
-        if (copyData)
-          copyData.user = user
-        this.data.set(copyData)
-        this.saveDataTolocalStorage()
-      }
-    } catch (error) { }
-  }
-  async deletePhoto(photo_id: string): Promise<void> {
-    const url = environment.baseUrl + 'api/photo/' + photo_id
-    try {
-      const response = this._http.delete<Photo>(url)
-      await firstValueFrom(response)
-      const user = this.data()!.user
-      if (user) {
-        const photo = user.photos?.filter(p => p.id !== photo_id)
-        user.photos = photo
-        const copyData = this.data()
-        if (copyData)
-          copyData.user = user
-        this.data.set(copyData)
-        this.saveDataTolocalStorage()
-      }
-    } catch (error) { }
-  }
+  //#endregion
+
+
+
 }

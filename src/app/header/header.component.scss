@@ -8,14 +8,14 @@ mat-toolbar button {
 }
 
 mat-toolbar button.active:not(.home-button) {
-    color: rgb(255, 166, 0);
+    color: aqua;
 }
 
 mat-toolbar button.active:not(.home-button) {
-    border-bottom: 0.15em solid rgb(235, 135, 170);
+    border-bottom: 0.15em solid skyblue;
 }
 
 mat-toolbar .home-button {
     font-size: xx-large;
-    color: rgb(95, 160, 154);
+    color: cadetblue;
 }
