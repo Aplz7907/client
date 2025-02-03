@@ -11,7 +11,7 @@ export class LoadingService {
   loading() {
     this.loadingRequestCount++
     this.spinner.show(undefined, {
-      type: "ball-8bits",
+      type: "fire",
       bdColor: 'rgba(183, 179, 179, 0.8)',
       color: 'rgba(15, 63, 108, 0.8)',
       fullScreen: true,
