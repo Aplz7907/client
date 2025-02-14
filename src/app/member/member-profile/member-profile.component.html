@@ -1,0 +1,30 @@
+<mat-sidenav-container class="profile-container">
+    <mat-sidenav mode="side" opened class="sidenav">
+      <h2>{{ member.display_name }}</h2>
+      <p>{{ member.username }}</p>
+      <p>Age: {{ member.age }} years</p>
+      <p>Looking for: {{ member.looking_for }}</p>
+      <p>Interest: {{ member.interest }}</p>
+      <button mat-button color="primary" (click)="router.navigate(['/chat', member.username])">
+        💬 Chat
+      </button>
+      <button mat-button color="warn" (click)="router.navigate(['/report', member.username])">
+        🚩 Report
+      </button>
+    </mat-sidenav>
+  
+    <div class="content">
+      <h1>{{ member.display_name }}&#39;s Profile</h1>
+  
+      <gallery [items]="images" thumbPosition="bottom" class="gallery"></gallery>
+  
+      <div class="member-details">
+        <h3>About {{ member.display_name }}</h3>
+        <p><strong>Age:</strong> {{ member.age }}</p>
+        <p><strong>Gender:</strong> {{ member.gender }}</p>
+        <p><strong>Looking for:</strong> {{ member.looking_for }}</p>
+        <p><strong>Interests:</strong> {{ member.interest }}</p>
+      </div>
+    </div>
+  </mat-sidenav-container>
+  

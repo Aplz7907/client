@@ -5,6 +5,7 @@ import { User } from '../_models/user'
 import { firstValueFrom } from 'rxjs'
 import { pareUserPhoto } from '../_helper/helper'
 import { Photo } from '../_models/photo'
+import { cacheManager } from '../_helper/cache'
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +41,9 @@ export class AccountService {
     }
   }
 
-
+  public SetuUSer(user: User) {
+    this.setUser(user)
+  }
   private setUser(user: User) {
     const copyData = this.data()
     if (copyData)
@@ -72,6 +75,7 @@ export class AccountService {
   logout() {
     localStorage.removeItem(this._key)
     this.data.set(null)
+    cacheManager.clear('all')
   }
 
   async login(logindata: { username: string, password: string }): Promise<string> {

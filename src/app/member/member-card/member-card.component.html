@@ -1,22 +1,29 @@
 <mat-card class="example-card" appearance="outlined">
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <p>{{ member().display_name }}</p>
-    <mat-card-subtitle>{{ member().username }}</mat-card-subtitle>
+    <div mat-card-avatar class="header-image">
+      <mat-card-subtitle>{{ member().username }}</mat-card-subtitle>
+      <mat-card-title>{{ member().display_name }}</mat-card-title>
+    </div>
+
+
   </mat-card-header>
-  <img
-    mat-card-image
-    [src]="member().photoOfTheDay"
-    alt="Photo of a {{ member().display_name }}"
-  />
+  <img class="photoOfTheDay" mat-card-image [src]="member().photoOfTheDay"
+    alt="Photo of a {{ member().display_name }}" />
   <mat-card-content>
-    <p>🃏</p>
+    <p>PHOTO</p>
     <p>{{ member().age }} years</p>
     <p>{{ member().looking_for }}</p>
     <p>{{ member().interest }}</p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
+    <button mat-button (click)="toggleLike()">
+      @if (isFollowing){
+      ❤️
+      }
+      @if(!isFollowing){
+      🤍
+      }
+    </button>
+    <!-- <button mat-button routerLink="/member-profile/{{member().username}}">More Dtail</button> -->
   </mat-card-actions>
 </mat-card>

@@ -38,6 +38,24 @@ export const routes: Routes = [
         loadComponent: () => import('./member/member.component').then(c => c.MemberComponent)
     },
     {
+        path: 'member-proflile/:username',
+        runGuardsAndResolvers: 'always',
+        canActivate: [authGuard],
+        loadComponent: () => import('./member/member-profile/member-profile.component').then(c => c.MemberProfileComponent)
+    },
+    {
+        path: 'profile',
+        loadComponent: () => import('./profile/profile.component').then(c => c.ProfileComponent)
+    },
+    {
+        path: 'following',
+        loadComponent: () => import('./following/following.component').then(c => c.FollowingComponent)
+    },
+    {
+        path: 'follower',
+        loadComponent: () => import('./follower/follower.component').then(c => c.FollowerComponent)
+    },
+    {
         path: '404',
         loadComponent: () => import('./not-found/not-found.component').then(c => c.NotFoundComponent)
     },
