@@ -41,7 +41,7 @@ export class AccountService {
     }
   }
 
-  public SetuUSer(user: User) {
+  public _setuser(user: User) {
     this.setUser(user)
   }
   private setUser(user: User) {
@@ -74,6 +74,7 @@ export class AccountService {
   //#region login_and_register
   logout() {
     localStorage.removeItem(this._key)
+
     this.data.set(null)
     cacheManager.clear('all')
   }
@@ -137,7 +138,7 @@ export class AccountService {
     return true
   }
   //#endregion
-  //#region profile
+  //#region photo
   async uploadPhoto(file: File): Promise<boolean> {
     const url = environment.baseUrl + 'api/photo/'
     const fromData = new FormData()

@@ -16,7 +16,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UploadPhotoComponent {
-  acceptedImageType = ['img/jpeg', 'image/png']
+  acceptedImageType = ['image/jpeg', 'image/png']
   imgFile: File | undefined
   imgPreview = signal<undefined | string>(undefined)
   errMessage = signal<undefined | string>(undefined)
@@ -41,7 +41,7 @@ export class UploadPhotoComponent {
         fileReader.readAsDataURL(this.imgFile)
       } else {
         this.imgFile = undefined
-        this.errMessage.set('Image file must be .jpg or .png')
+        this.errMessage.set('Image file must be .jpg or .png 🥵')
       }
     }
   }

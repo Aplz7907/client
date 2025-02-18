@@ -1,17 +1,21 @@
-.member-item {
-    margin-top: 10px;
-    margin-left: 5px;
-    margin-right: 5px;
-    max-width: 350px;
+.member-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .memberlist {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-top: 20px;
 }
 
-* {
-    font-family: 'HYWenHei 85W';
+.member-itemiv {
+    transition: transform 0.3s;
+}
 
+.member-itemiv:hover {
+    transform: scale(1.05);
 }

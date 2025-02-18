@@ -19,7 +19,7 @@ export class ErrorService {
     if (error) {
       switch (error.status) {
         case 400:
-          this.snackbar.open('Bad Request 🥵', 'ok', this.snackbarConfig)
+          this.snackbar.open('Bad Request', 'ok', this.snackbarConfig)
           break
         case 404:
           this.router.navigate(['/404'])
@@ -48,7 +48,7 @@ export class ErrorService {
           this.router.navigate(['/server-error'], navExtra)
           break
         default:
-          this.snackbar.open("Something ไม่ดี", 'ok', this.snackbarConfig)
+          this.snackbar.open("Something ไม่บอกกก", 'ok', this.snackbarConfig)
           break
       }
     }

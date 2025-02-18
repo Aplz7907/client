@@ -4,7 +4,7 @@ import { environment } from '../../environments/environment'
 import { User } from '../_models/user'
 import { cacheManager } from '../_helper/cache'
 import { Paginator, UserQueryPagination, default_paginator } from '../_models/pagination'
-import { pareQuery } from '../_helper/helper'
+import { pareQuery, pareUserPhoto } from '../_helper/helper'
 import { firstValueFrom } from 'rxjs'
 
 
@@ -13,9 +13,6 @@ type dataCategory = 'member' | 'follower' | 'following'
   providedIn: 'root'
 })
 export class MemberService {
-  getMemverByusername(username: string) {
-    throw new Error('Method not implemented.')
-  }
   private http = inject(HttpClient)
   private url = environment.baseUrl + 'api/' //user
 
@@ -47,27 +44,22 @@ export class MemberService {
   getMembers() {
     this.getData('member')
   }
-  async getMember(username: string): Promise<User | undefined> {
-    const members = this.paginator().items.find(obj => obj.username === username)
-    if (members) {
-      console.log('get member from cache')
-      return members
+  async getMemverByusername(username: string): Promise<User | undefined> {
+    const member = this.paginator().items.find(obj => obj.username === username)
+    if (member) {
+      console.log('gay form cache')
+      return member
     } else {
-      console.log('get member from api')
+      console.log('get from api')
       try {
-        const url = this.url + 'user/username' + username
+        const url = this.url + 'user/' + username
         const _member = await firstValueFrom(this.http.get<User>(url))
-        return this.parseUserPhoto(_member)
+        return pareUserPhoto(_member)
       } catch (error) {
-        console.error('ไม่พบสมอง', error)
+        console.error('Someting Nigga member 🙎🏿‍♂️ : ', error)
       }
     }
     return undefined
-  }
-
-  private parseUserPhoto(user: User): User {
-    // Implement the parseUserPhoto logic here
-    return user
   }
 }
 

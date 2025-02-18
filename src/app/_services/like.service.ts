@@ -1,47 +1,45 @@
 import { computed, inject, Injectable, Signal } from '@angular/core'
-import { AccountService } from './account.service'
 import { User } from '../_models/user'
+import { AccountService } from './account.service'
 import { HttpClient } from '@angular/common/http'
 import { environment } from '../../environments/environment'
-import { sleep } from 'bun'
 
 @Injectable({
   providedIn: 'root'
 })
 export class LikeService {
-
   user: Signal<User | undefined>
-  http: HttpClient = inject(HttpClient)
-  accountService: AccountService = inject(AccountService)
-  private baseApiurl = environment.baseUrl + 'api/like/'
-
+  _http: HttpClient = inject(HttpClient)
+  accountservice: AccountService = inject(AccountService)
+  private baseurl = environment.baseUrl + 'api/like/'
   constructor() {
-    this.user = computed(() => this.accountService.data()?.user)
+    this.user = computed(() => this.accountservice.data()?.user)
   }
-
-  public IsFollowing(id: string): boolean {
+  public IsfollowingMember(id: string): boolean {
     const user = this.user()
     if (!user) return false
     const following = (user.following as string[])
     return following.includes(id)
   }
 
-  toggleLike(target_id: string) {
+  toggleLike(target_id: string): boolean {
     const user = this.user()
-    if (!user) return
-    const url = this.baseApiurl
-    this.http.put(url, { target_id }).subscribe()
+    if (!user) return false
+    const url = this.baseurl
+    this._http.put(url, { target_id }).subscribe()
     const following = (user.following as string[])
-    const isFollowingTarget = following.includes(target_id)
-    if (isFollowingTarget) {
-      console.log('remov $ {target_id} from following')
+    const isfollowingtarget = following.includes(target_id)
+    if (isfollowingtarget) {
+      console.log(`unliking ${target_id}`)
       user.following = following.filter(id => id !== target_id)
+
     } else {
-      console.log('add $ {target_id} to following')
+      console.log(`like ${target_id}`)
       following.push(target_id)
       user.following = following
+
     }
-    this.accountService.SetuUSer(user)
+    this.accountservice._setuser(user)
     return user.following.includes(target_id)
   }
 }
