@@ -1,17 +1,17 @@
-import { Component, inject } from '@angular/core'
+import { Component, inject, OnInit } from '@angular/core'
 import { User } from '../../_models/user'
-import { GalleryModule, GalleryItem } from 'ng-gallery'
+import { GalleryModule, GalleryItem, ImageItem } from 'ng-gallery'
 import { MemberService } from '../../_services/member.service'
 import { Photo } from '../../_models/photo'
 import { ActivatedRoute, Router } from '@angular/router'
 import { MatSidenavModule } from '@angular/material/sidenav'
-import { NgModule } from '@angular/core'
-import { BrowserModule } from '@angular/platform-browser'
-import { RouterModule } from '@angular/router'
+import { MatCardModule } from '@angular/material/card'
+import { MatIconModule } from '@angular/material/icon'
+import { MatButtonModule } from '@angular/material/button'
 
 @Component({
   selector: 'app-member-profile',
-  imports: [GalleryModule, MatSidenavModule, BrowserModule, RouterModule],
+  imports: [GalleryModule, MatSidenavModule, MatCardModule, MatIconModule, MatButtonModule],
   templateUrl: './member-profile.component.html',
   styleUrls: ['./member-profile.component.scss']
 })

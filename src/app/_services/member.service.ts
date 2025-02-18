@@ -13,6 +13,9 @@ type dataCategory = 'member' | 'follower' | 'following'
   providedIn: 'root'
 })
 export class MemberService {
+  getMemverByusername(username: string) {
+    throw new Error('Method not implemented.')
+  }
   private http = inject(HttpClient)
   private url = environment.baseUrl + 'api/' //user
 
