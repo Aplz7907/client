@@ -1,4 +1,21 @@
-* {
-    font-family: 'HYWenHei 85W';
+.member-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
+.memberlist {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.member-itemiv {
+    transition: transform 0.3s;
+}
+
+.member-itemiv:hover {
+    transform: scale(1.05);
 }

@@ -56,7 +56,7 @@ export class MemberService {
         const _member = await firstValueFrom(this.http.get<User>(url))
         return pareUserPhoto(_member)
       } catch (error) {
-        console.error('Someting Nigga member 🙎🏿‍♂️ : ', error)
+        console.error('Someting Nigga member : ', error)
       }
     }
     return undefined

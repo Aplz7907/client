@@ -100,11 +100,11 @@ export class LoginComponent {
         break
       case 'password':
         if (control.hasError('required'))
-          this.errorMessages.password.set('นิ่งไว้วววววว ผมเคยเล่นเกมนี้มาก่อน')
+          this.errorMessages.password.set('เกย์')
         else if (control.hasError('invalidMinlength'))
-          this.errorMessages.password.set(' Must Be 8🤯')
+          this.errorMessages.password.set(' Must Be 8')
         else if (control.hasError('invalidMaxlength'))
-          this.errorMessages.password.set(' Must Bev 16🤯')
+          this.errorMessages.password.set(' Must Bev 16')
         else if (control.hasError('invalidLowerCase'))
           this.errorMessages.password.set(' Must low')
         else if (control.hasError('invalidUpperCase'))
@@ -118,9 +118,9 @@ export class LoginComponent {
         break
       case 'confirm_password':
         if (control.hasError('required'))
-          this.errorMessages.confirm_password.set('นิ่งไว้วววววว ผมเคยเล่นเกมนี้มาก่อน')
+          this.errorMessages.confirm_password.set('นิ่งไว้วววววว')
         else if (control.hasError('misMatch'))
-          this.errorMessages.confirm_password.set(' ต้องเหมือนกัน🤯🤯')
+          this.errorMessages.confirm_password.set('ไม่ตรงกัน')
         else
           this.errorMessages.confirm_password.set('')
         break
@@ -128,9 +128,9 @@ export class LoginComponent {
         if (control.hasError('required'))
           this.errorMessages.display_name.set('นิ่งไว้วววววว ผมเคยเล่นเกมนี้มาก่อน')
         else if (control.hasError('minlength'))
-          this.errorMessages.display_name.set(' Must Be at least 3 Char🤯')
+          this.errorMessages.display_name.set(' Must Be at least 3 Char')
         else if (control.hasError('maxlength'))
-          this.errorMessages.display_name.set(' Must Be at least 8 Char or fewer🤯')
+          this.errorMessages.display_name.set(' Must Be at least 8 Char or fewer')
         else
           this.errorMessages.display_name.set('')
         break
