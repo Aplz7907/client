@@ -1,5 +1,5 @@
 export const environment = {
-    production: false,
-    baseUrl: 'http://localhst:8000/',
-    wsUrl: 'wss://localhost:8000/message/ws'
+    production: true,
+    baseUrl: 'http://localhost:8000/',
+    wsUrl: 'wss://localhost:8000/api/message/ws'
 }

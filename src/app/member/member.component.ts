@@ -20,6 +20,9 @@ import { MemberCardComponent } from './member-card/member-card.component'
   styleUrl: './member.component.scss'
 })
 export class MemberComponent implements OnInit {
+  onResetsearch() {
+    throw new Error('Method not implemented.')
+  }
   private memberservice = inject(MemberService)
   paginator: WritableSignal<Paginator<UserQueryPagination, User>>
   pageSize = default_pageSizeOption
